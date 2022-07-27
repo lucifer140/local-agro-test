@@ -14,7 +14,7 @@ spec:
         pathType: Exact  
         backend:
           service:
-            name: kubernetes-dashboard
+            name: mongo-express-service
             port: 
               number: 80
 
