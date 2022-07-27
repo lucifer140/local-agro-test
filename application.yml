@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: https://github.com/lucifer140/Kubernetes-Mongo-Express.git
+    repoURL: https://github.com/lucifer140/local-agro-test.git
     targetRevision: HEAD
     path: .
   destination:
