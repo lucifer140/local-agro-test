@@ -9,7 +9,7 @@ spec:
   source:
     repoURL: https://github.com/lucifer140/Kubernetes-Mongo-Express.git
     targetRevision: HEAD
-    path: Kubernetes-Mongo-Express
+    path: .
   destination:
     server: https://kubernetes.default.svc
     namespace: default
