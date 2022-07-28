@@ -1,0 +1,28 @@
+apiVersion: argoproj.io/v1alpha1
+kind: ApplicationSet
+metadata:
+  name: test-set
+spec:
+  generators:
+  - list: 
+      # Parameters are generated based on this cluster list, to be substituted
+      # into the template below.
+      elements: 
+      - cluster: wordpress 
+        url: k3d-wordpress-argocd 
+      - cluster: agrocd-test
+       url: k3d-argocd-test
+  template: 
+    # An Argo CD Application template, with support for parameter substitution 
+    # with values from parameters generated above.
+    metadata:
+      name: test-set
+    spec:
+      project: default
+      source:
+        repoURL: https://github.com/lucifer140/local-agro-test.git
+        targetRevision: HEAD
+        path: .
+      destination:
+        server: '{{url}}'
+        namespace: default
