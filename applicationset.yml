@@ -25,7 +25,7 @@ spec:
       source:
         repoURL: https://github.com/lucifer140/local-agro-test.git
         targetRevision: HEAD
-        path: [ ./wordes, ./manifest ]
+        path: wordes                         # [ ./wordes, ./manifest ]
       destination:
         server: '{{url}}'
         namespace: default
