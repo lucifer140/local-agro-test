@@ -7,11 +7,13 @@ spec:
   - list: 
       # Parameters are generated based on this cluster list, to be substituted
       # into the template below.
-      elements: 
+      elements:
+      - cluster: kubernetes-service
+        url: https://kubernetes.default.svc  
       - cluster: wordpress 
         url: k3d-wordpress-argocd 
       - cluster: agrocd-test
-       url: k3d-argocd-test
+        url: k3d-argocd-test
   template: 
     # An Argo CD Application template, with support for parameter substitution 
     # with values from parameters generated above.
@@ -26,3 +28,9 @@ spec:
       destination:
         server: '{{url}}'
         namespace: default
+    syncPolicy:
+     automated: # automated sync by default retries failed attempts 5 times with following delays between attempts ( 5s, 10s, 20s, 40s, 80s ); retry controlled using `retry` field.
+      prune: true # Specifies if resources should be pruned during auto-syncing ( false by default ).
+      selfHeal: true # Specifies if partial app sync should be executed when resources are changed only in target Kubernetes cluster and no git change detected ( false by default ).
+      allowEmpty: false # 
+      
