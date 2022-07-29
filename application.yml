@@ -11,7 +11,7 @@ spec:
     targetRevision: HEAD
     path: manifests
   destination:
-    server: https://kubernetes.default.svc
+    server: arn:aws:eks:ca-central-1:885300287765:cluster/multiargocd-eks
     namespace: default
   syncPolicy:
     automated: # automated sync by default retries failed attempts 5 times with following delays between attempts ( 5s, 10s, 20s, 40s, 80s ); retry controlled using `retry` field.
